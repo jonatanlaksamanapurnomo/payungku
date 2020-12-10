@@ -5,6 +5,7 @@ const Home = () => {
     const [data , setData] = useState([]);
     useEffect(() => {
         getBali().then(res => {
+            console.log(res)
             setData(res)
         })
     },[])

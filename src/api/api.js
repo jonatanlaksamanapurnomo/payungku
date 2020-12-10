@@ -1,6 +1,15 @@
 import axios from "axios";
 import XMLParser from "react-xml-parser";
 
+
+const getAceh = () => {
+    return  axios.get("https://data.bmkg.go.id/datamkg/MEWS/DigitalForecast/DigitalForecast-Aceh.xml").then(res => {
+        let xmlData = res.data;
+        let parser = new XMLParser().parseFromString(xmlData);
+        return parser.children;
+    })
+
+}
 const getJawaBarat = () => {
    return  axios.get("https://data.bmkg.go.id/datamkg/MEWS/DigitalForecast/DigitalForecast-JawaBarat.xml").then(res => {
         let xmlData = res.data;
@@ -264,11 +273,18 @@ const getPapuaBarat = () => {
         return parser.children;
     })
 }
+const getMalukuUtara = () => {
+    return  axios.get("https://data.bmkg.go.id/datamkg/MEWS/DigitalForecast/DigitalForecast-MalukuUtara.xml").then(res => {
+        let xmlData = res.data;
+        let parser = new XMLParser().parseFromString(xmlData);
+        return parser.children;
+    })
+
+}
 
 
 
 
 
-
-export  {getJawaBarat , getBali , getBangkaBelitung , getBanten  , getBengkulu , getYogyakarta , getJakarta , getGorontalo , getJambi , getIndonesia, getSumUt, getSumSel, getSumBar, getSulSel, getSulTengah, getSulTenggara, getSulUt, getSulBar, getRiau , getMaluku, getJawaTengah, getJawaTimur, getKalimantanBarat, getKalimantanSelatan, getKalimantanTengah, getKalimantanTimur, getKalimantanUtara, getKepulauanRiau,
-    getLampung, getNusaTenggaraBarat, getNusaTenggaraTimur, getPapua, getPapuaBarat}
+export  {getAceh,  getBali , getBangkaBelitung , getBanten  , getBengkulu , getYogyakarta , getJakarta , getGorontalo , getJambi , getIndonesia, getSumUt, getSumSel, getSumBar, getSulSel, getSulTengah, getSulTenggara, getSulUt, getSulBar, getRiau , getMaluku, getJawaTengah, getJawaTimur, getKalimantanBarat, getKalimantanSelatan, getKalimantanTengah, getKalimantanTimur, getKalimantanUtara, getKepulauanRiau,
+    getLampung, getNusaTenggaraBarat, getNusaTenggaraTimur, getPapua, getPapuaBarat , getMalukuUtara , getJawaBarat}
