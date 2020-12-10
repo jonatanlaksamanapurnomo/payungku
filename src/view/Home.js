@@ -1,10 +1,10 @@
 import React , {useState,useEffect} from 'react';
-import {getJawaBarart } from "../api/api";
+import {getBali } from "../api/api";
 
 const Home = () => {
     const [data , setData] = useState([]);
     useEffect(() => {
-        getJawaBarart().then(res => {
+        getBali().then(res => {
             setData(res)
         })
     },[])
