@@ -20,10 +20,17 @@ const Home = () => {
     }, [])
 
     const handleInput = (e) => {
-        let kambing = {};
-        kambing.description = [e.target.value]
-        setFilter(kambing)
+        let filter = {};
+        filter.description = [e.target.value]
+        setFilter(filter)
     }
+
+    const handleOnClick = () =>{
+        let query = buildFilter(filter)
+        let result = filterData(data, query)
+        return result
+    }
+
     return (
         <div>
             <Form>
@@ -31,11 +38,7 @@ const Home = () => {
                     <Input type="text" onChange={handleInput} placeholder="search domain"/>
                 </FormGroup>
                 <FormGroup>
-                    <Button onClick={() => {
-                        let query = buildFilter(filter)
-                        let a = filterData(data, query)
-                        console.log(a)
-                    }} color="primary">Test!</Button>
+                    <Button onClick={handleOnClick} color="primary">Test!</Button>
                 </FormGroup>
             </Form>
 

@@ -4,13 +4,12 @@ import XMLParser from "react-xml-parser";
 const fieldNameMapper = value => {
     return (
         {
-            id: value.id,
+            id: value.attributes.id,
             description: value.attributes.description.toLowerCase(),
             domain: value.attributes.domain.toLowerCase(),
             child: value.children,
-            lat: value.latitude,
-            long: value.longitude
-
+            lat: value.attributes.latitude,
+            long: value.attributes.longitude
         }
     )
 };
