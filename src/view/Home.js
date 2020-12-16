@@ -1,23 +1,22 @@
-import React, {useState, useEffect} from 'react';
-import {getBali} from "../api/api";
+import React, {useState, useEffect , useCallback} from 'react';
+import {getDataByPlace} from "../api/api";
 import {buildFilter, filterData} from "../utill/filter";
-import {Button, Form, FormGroup, Input} from "reactstrap"
+import {Button, Form, FormGroup, Input , Label} from "reactstrap"
 
 const Home = () => {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState({});
-    useEffect(() => {
-        let filter = {
-            domain: ["Bali"],
-            latitude: ["-8.42"]
-        }
-        let queryFiler = buildFilter(filter)
 
-        getBali().then(res => {
+    const fetchData = useCallback(() =>{
+        getDataByPlace().then(res => {
             // console.log(filterData(res , queryFiler))
+            console.log(res)
             setData(res)
         })
-    }, [])
+    },[])
+    useEffect(() => {
+        fetchData()
+    }, [fetchData])
 
     const handleInput = (e) => {
         let filter = {};
@@ -36,6 +35,16 @@ const Home = () => {
             <Form>
                 <FormGroup>
                     <Input type="text" onChange={handleInput} placeholder="search domain"/>
+                </FormGroup>
+                <FormGroup>
+                    <Label for="exampleSelect">Select Place</Label>
+                    <Input type="select" name="select" id="exampleSelect">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </Input>
                 </FormGroup>
                 <FormGroup>
                     <Button onClick={handleOnClick} color="primary">Test!</Button>
