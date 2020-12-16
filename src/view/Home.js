@@ -1,55 +1,71 @@
 import React, {useState, useEffect , useCallback} from 'react';
 import {getDataByPlace} from "../api/api";
 import {buildFilter, filterData} from "../utill/filter";
-import {Button, Form, FormGroup, Input , Label} from "reactstrap"
+import {Button, Form, FormGroup, Input } from "reactstrap"
+import {places} from "../utill/filter";
+import { Typeahead } from 'react-bootstrap-typeahead';
 
 const Home = () => {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState({});
 
-    const fetchData = useCallback(() =>{
-        getDataByPlace().then(res => {
-            // console.log(filterData(res , queryFiler))
-            console.log(res)
+    const fetchData = useCallback((place = "Indonesia") =>{
+        getDataByPlace(place).then(res => {
             setData(res)
         })
     },[])
+   const onChangePlace = useCallback((e) => {
+       let place = e.target.value;
+       fetchData(place)
+
+   },[fetchData])
     useEffect(() => {
         fetchData()
     }, [fetchData])
 
     const handleInput = (e) => {
         let filter = {};
-        filter.description = [e.target.value]
+        filter.description = e
         setFilter(filter)
     }
 
     const handleOnClick = () =>{
         let query = buildFilter(filter)
         let result = filterData(data, query)
-        return result
+        setData(result)
     }
 
     return (
         <div>
-            <Form>
-                <FormGroup>
-                    <Input type="text" onChange={handleInput} placeholder="search domain"/>
-                </FormGroup>
-                <FormGroup>
-                    <Label for="exampleSelect">Select Place</Label>
-                    <Input type="select" name="select" id="exampleSelect">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </Input>
-                </FormGroup>
-                <FormGroup>
-                    <Button onClick={handleOnClick} color="primary">Test!</Button>
-                </FormGroup>
-            </Form>
+            <div className="row">
+                <div className="col-12">
+                    <Form>
+                        <FormGroup className="mb-3">
+                            <Typeahead
+                                id="basic-typeahead-single"
+                                labelKey="place"
+                                options={data.map(item => item.description)}
+                                onChange={handleInput}
+                                placeholder="Pilih Tempat..."
+                            />
+                        </FormGroup>
+                        <FormGroup>
+                            <Input   defaultValue={"Indonesia"} onChange={onChangePlace}  type="select" name="select" id="exampleSelect">
+                                {places.map(item => (
+                                    <option key={places.indexOf(item)}>{item.place}</option>
+                                ))}
+                            </Input>
+                        </FormGroup>
+                        <FormGroup className="d-flex justify-content-center">
+                            <Button  onClick={handleOnClick} color="primary">Search</Button>
+                        </FormGroup>
+                    </Form>
+                </div>
+                <div className="col-12">
+                    {JSON.stringify(data , null , 2)}
+                </div>
+            </div>
+
 
         </div>
     );
