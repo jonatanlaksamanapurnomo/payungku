@@ -182,7 +182,6 @@ const places = [
 
 const normalizeWeatherCode = (param) => {
     let result = null;
-    console.log(param)
     if ((param >= 1 && param <= 4) || (param >= 101 && param <= 104)) {
         result = {
             url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/sun-behind-cloud_26c5.png",

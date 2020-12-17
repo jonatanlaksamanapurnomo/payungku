@@ -9,6 +9,7 @@ import Weathercard from "../component/weathercard";
 const Home = () => {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState({});
+    const [selectedPlace , setPlace] = useState("Indonesia");
 
     const fetchData = useCallback((place = "Indonesia") => {
         getDataByPlace(place).then(res => {
@@ -19,6 +20,8 @@ const Home = () => {
     const onChangePlace = useCallback((e) => {
         let place = e.target.value;
         fetchData(place)
+        setPlace(place)
+
 
     }, [fetchData])
     useEffect(() => {
@@ -33,8 +36,14 @@ const Home = () => {
 
     const handleOnClick = () => {
         let query = buildFilter(filter)
-        let result = filterData(data, query)
-        setData(result)
+        if(Object.keys(query).length === 0 && query.constructor === Object){
+            fetchData(selectedPlace)
+        }
+        else{
+            let result = filterData(data, query)
+            setData(result)
+        }
+
     }
 
     return (
