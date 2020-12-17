@@ -76,12 +76,12 @@ const Home = () => {
                 <div className="row  w-100">
                     {data.map(item => {
                         console.log(item)
-                        if (item.domain !== "pelabuhan" && item.domain !== "wisata lokasi") {
+                        // if (item.domain !== "pelabuhan" && item.domain !== "wisata lokasi") {
                             return (<div key={data.indexOf(item)} className="col-md-4">
                                 <Weathercard data={item} />
                             </div>)
-                        }
-                        else return ""
+                        // }
+                        // else return ""
                     }
                     )}
 

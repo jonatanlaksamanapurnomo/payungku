@@ -37,6 +37,7 @@ const Weathercard = (props) => {
     }
     catch (err) {
         console.log("Data tidak valid")
+        return null;
     }
 
     return (<div className="card mx-0  "><span className="icon"><img alt="" className="img-fluid"
