@@ -180,35 +180,56 @@ const places = [
     }
 ];
 
-const weatherIcon = {
-    4: "https://img.icons8.com/office/80/000000/partly-cloudy-day.png",
-    0: "https://img.icons8.com/emoji/96/000000/sun-emoji.png",
-};
-
 const normalizeWeatherCode = (param) => {
-    let result = "";
+    let result = null;
+    console.log(param)
     if (param >= 1 && param <= 4 || param >= 101 && param <= 104) {
-        result = "https://img.icons8.com/office/80/000000/partly-cloudy-day.png";
-    } else if (param === 0 || param === 100) {
-        result = "https://img.icons8.com/emoji/96/000000/sun-emoji.png";
-    } else if (param === 5) {
-        result = " udara kabur";
+        result = {
+            url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/sun-behind-cloud_26c5.png",
+            name: "Berawan"
+        };
+    } else if (param == 0 || param == 100) {
+        result = {
+            url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/sun_2600-fe0f.png",
+            name: "Cerah"
+        };
+    } else if (param == 5) {
+        result = {
+            url: "https://www.flaticon.com/premium-icon/icons/svg/686/686764.svg",
+            name: "Udara Kabur"
+        };
     } else if (param === 10) {
-        result = "Asap"
-    } else if (param === 60) {
-        result = "Hujan Ringan"
-    } else if (param === 61) {
-        result = "Hujan Sedang"
-    } else if (param === 63) {
-        result = "Hujan Lebat"
-    } else if (param === 80) {
-        result = "Hujan Lokal"
-    } else if (param === 95) {
-        result = "Hujan Petir"
-    } else {
-        result = "Hujan Petir"
+        result = {
+            url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/dashing-away_1f4a8.png",
+            name: "Asap"
+        }
+    } else if (param == 60) {
+        result = {
+            url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/cloud-with-rain_1f327-fe0f.png",
+            name: "Hujan Ringan"
+        }
+    } else if (param == 61) {
+        result = {
+            url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/cloud-with-rain_1f327-fe0f.png",
+            name: "Hujan Sedang"
+        }
+    } else if (param == 63) {
+        result = {
+            url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/cloud-with-rain_1f327-fe0f.png",
+            name: "Hujan Lebat"
+        }
+    } else if (param == 80) {
+        result = {
+            url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/cloud-with-rain_1f327-fe0f.png",
+            name: "Hujan Lokal"
+        }
+    } else if (param == 95 || param == 97) {
+        result = {
+            url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/cloud-with-lightning-and-rain_26c8-fe0f.png",
+            name: "Hujan Petir"
+        }
     }
     return result
 }
 
-export {buildFilter, filterData, places, normalizeWeatherCode}
+export { buildFilter, filterData, places, normalizeWeatherCode }

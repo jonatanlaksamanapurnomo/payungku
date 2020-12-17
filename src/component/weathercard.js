@@ -1,6 +1,6 @@
 import React from 'react';
 import "./weather.css";
-import {normalizeWeatherCode} from "../utill/filter";
+import { normalizeWeatherCode } from "../utill/filter";
 
 const Weathercard = (props) => {
     const capitalizeEachWord = (words) => {
@@ -11,13 +11,16 @@ const Weathercard = (props) => {
         }
         return separateWord.join(' ');
     }
-    let {description, child} = props.data
-    let {children} = child[8]
-    let weatherNowIcon = normalizeWeatherCode(children[0].children[0].value)
+    let { description, child } = props.data
+    let { children } = child[8]
+    let currentWeather = normalizeWeatherCode(children[0].children[0].value)
+    let currentWeatherIcon = currentWeather.url
+    let currentWeatherName = currentWeather.name
+
 
 
     return (<div className="card mx-0  "><span className="icon"><img alt="" className="img-fluid"
-                                                                     src={weatherNowIcon}/></span>
+        src={currentWeatherIcon} /></span>
         <div className="title">
             <p>{capitalizeEachWord(description)}</p>
         </div>
@@ -25,7 +28,7 @@ const Weathercard = (props) => {
         <div className="row">
             <div className="col-4">
                 <div className="header">General</div>
-                <div className="value">Sunny</div>
+                <div className="value">{currentWeatherName}</div>
             </div>
             <div className="col-4">
                 <div className="header">Air pollution</div>
