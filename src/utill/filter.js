@@ -181,7 +181,7 @@ const places = [
 ];
 
 const normalizeWeatherCode = (param) => {
-    let result = null;
+    let result = {url:"404 Not Found",name:"buchad"};
     if ((param >= 1 && param <= 4) || (param >= 101 && param <= 104)) {
         result = {
             url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/sun-behind-cloud_26c5.png",
@@ -235,7 +235,15 @@ const normalizeWeatherCode = (param) => {
             url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/cloud-with-lightning-and-rain_26c8-fe0f.png",
             name: "Hujan Petir"
         }
+        // eslint-disable-next-line
+    } else if (param == 45){
+        result = {
+            url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/whatsapp/273/fog_1f32b-fe0f.png",
+            name: "Kabut"
+        }
+        // eslint-disable-next-line
     }
+    
     return result
 }
 

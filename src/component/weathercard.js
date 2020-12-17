@@ -13,19 +13,38 @@ const Weathercard = (props) => {
     }
 
     let { description, child } = props.data
-    let { children } = child[8]
-    let currentWeather = normalizeWeatherCode(children[0].children[0].value)
-    let currentWeatherIcon = currentWeather.url
-    let currentWeatherName = currentWeather.name
-    let {children:temp_child} = child[7]
-    let weatherTemp = temp_child[0].children[0].value;
+    let weatherList = null;
+    let temperatureList = null;
+    child.forEach(element => {
+        try {
+            if (element.attributes.id === "weather") {
+                weatherList = element.children
+            }
+            if (element.attributes.id === "t") {
+                temperatureList = element.children
+            }
+        }
+        catch (err) {
+            console.log("Data tidak valid")
+        }
+    });
+    let currentWeather, currentWeatherIcon, currentWeatherName, currentTemp = null
+    try {
+         currentWeather = normalizeWeatherCode(weatherList[0].children[0].value)
+         currentWeatherIcon = currentWeather.url
+         currentWeatherName = currentWeather.name
+         currentTemp = temperatureList[0].children[0].value
+    }
+    catch (err) {
+        console.log("Data tidak valid")
+    }
 
     return (<div className="card mx-0  "><span className="icon"><img alt="" className="img-fluid"
         src={currentWeatherIcon} /></span>
         <div className="title">
             <p>{capitalizeEachWord(description)}</p>
         </div>
-        <div className="temp">{weatherTemp}<sup>&deg;</sup>C</div>
+        <div className="temp">{currentTemp}<sup>&deg;</sup>C</div>
         <div className="row">
             <div className="col-4">
                 <div className="header">General</div>

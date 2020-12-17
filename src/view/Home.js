@@ -1,15 +1,15 @@
-import React, {useState, useEffect, useCallback} from 'react';
-import {getDataByPlace} from "../api/api";
-import {buildFilter, filterData} from "../utill/filter";
-import {Button, Form, FormGroup, Input} from "reactstrap"
-import {places} from "../utill/filter";
-import {Typeahead} from 'react-bootstrap-typeahead';
+import React, { useState, useEffect, useCallback } from 'react';
+import { getDataByPlace } from "../api/api";
+import { buildFilter, filterData } from "../utill/filter";
+import { Button, Form, FormGroup, Input } from "reactstrap"
+import { places } from "../utill/filter";
+import { Typeahead } from 'react-bootstrap-typeahead';
 import Weathercard from "../component/weathercard";
 
 const Home = () => {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState({});
-    const [selectedPlace , setPlace] = useState("Indonesia");
+    const [selectedPlace, setPlace] = useState("Indonesia");
 
     const fetchData = useCallback((place = "Indonesia") => {
         getDataByPlace(place).then(res => {
@@ -36,10 +36,10 @@ const Home = () => {
 
     const handleOnClick = () => {
         let query = buildFilter(filter)
-        if(Object.keys(query).length === 0 && query.constructor === Object){
+        if (Object.keys(query).length === 0 && query.constructor === Object) {
             fetchData(selectedPlace)
         }
-        else{
+        else {
             let result = filterData(data, query)
             setData(result)
         }
@@ -62,7 +62,7 @@ const Home = () => {
                         </FormGroup>
                         <FormGroup>
                             <Input defaultValue={"Indonesia"} onChange={onChangePlace} type="select" name="select"
-                                   id="exampleSelect">
+                                id="exampleSelect">
                                 {places.map(item => (
                                     <option key={places.indexOf(item)}>{item.place}</option>
                                 ))}
@@ -74,11 +74,15 @@ const Home = () => {
                     </Form>
                 </div>
                 <div className="row  w-100">
-                    {data.map(item => (
-                        <div key={data.indexOf(item)} className="col-md-4">
-                            <Weathercard data={item}/>
-                        </div>
-                    ))}
+                    {data.map(item => {
+                        if (item.domain !== "pelabuhan") {
+                            return (<div key={data.indexOf(item)} className="col-md-4">
+                                <Weathercard data={item} />
+                            </div>)
+                        }
+                        else return ""
+                    }
+                    )}
 
                 </div>
             </div>
