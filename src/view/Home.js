@@ -1,26 +1,26 @@
-import React, {useState, useEffect , useCallback} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {getDataByPlace} from "../api/api";
 import {buildFilter, filterData} from "../utill/filter";
-import {Button, Form, FormGroup, Input } from "reactstrap"
+import {Button, Form, FormGroup, Input} from "reactstrap"
 import {places} from "../utill/filter";
-import { Typeahead } from 'react-bootstrap-typeahead';
+import {Typeahead} from 'react-bootstrap-typeahead';
 import Weathercard from "../component/weathercard";
 
 const Home = () => {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState({});
 
-    const fetchData = useCallback((place = "Indonesia") =>{
+    const fetchData = useCallback((place = "Indonesia") => {
         getDataByPlace(place).then(res => {
-            console.log(res)
+            // console.log(res)
             setData(res)
         })
-    },[])
-   const onChangePlace = useCallback((e) => {
-       let place = e.target.value;
-       fetchData(place)
+    }, [])
+    const onChangePlace = useCallback((e) => {
+        let place = e.target.value;
+        fetchData(place)
 
-   },[fetchData])
+    }, [fetchData])
     useEffect(() => {
         fetchData()
     }, [fetchData])
@@ -31,15 +31,15 @@ const Home = () => {
         setFilter(filter)
     }
 
-    const handleOnClick = () =>{
+    const handleOnClick = () => {
         let query = buildFilter(filter)
         let result = filterData(data, query)
         setData(result)
     }
 
     return (
-        <div>
-            <div className="row">
+        <div className="container">
+            <div className="row  d-flex justify-content-center">
                 <div className="col-12">
                     <Form>
                         <FormGroup className="mb-3">
@@ -52,19 +52,25 @@ const Home = () => {
                             />
                         </FormGroup>
                         <FormGroup>
-                            <Input   defaultValue={"Indonesia"} onChange={onChangePlace}  type="select" name="select" id="exampleSelect">
+                            <Input defaultValue={"Indonesia"} onChange={onChangePlace} type="select" name="select"
+                                   id="exampleSelect">
                                 {places.map(item => (
                                     <option key={places.indexOf(item)}>{item.place}</option>
                                 ))}
                             </Input>
                         </FormGroup>
                         <FormGroup className="d-flex justify-content-center">
-                            <Button  onClick={handleOnClick} color="primary">Search</Button>
+                            <Button onClick={handleOnClick} color="primary">Search</Button>
                         </FormGroup>
                     </Form>
                 </div>
-                <div className="col-12">
-                    <Weathercard/>
+                <div className="row  w-100">
+                    {data.map(item => (
+                        <div key={data.indexOf(item)} className="col-md-4">
+                            <Weathercard data={item}/>
+                        </div>
+                    ))}
+
                 </div>
             </div>
 

@@ -134,26 +134,8 @@
 /*    font-size: 1.2rem*/
 /*}*/
 
-body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(238, 237, 237, 0.33);
-    color: rgb(105, 104, 104);
-    font-family: sans-serif
-}
 
-.container {
-    height: 80vh;
-    background-color: #ffffff;
-    border-color: #ffffff;
-    align-items: center;
-    border-radius: 1rem;
-    vertical-align: middle
-}
-
-@media(max-width:767px) {
+@media (max-width: 767px) {
     .container {
         height: fit-content
     }
@@ -163,7 +145,7 @@ body {
     width: 77%
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
     .weather {
         width: 100%
     }
@@ -179,7 +161,7 @@ body {
     text-align: center
 }
 
-@media(max-width:768px) {
+@media (max-width: 768px) {
     .card {
         margin: 1.5rem
     }
