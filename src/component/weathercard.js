@@ -11,20 +11,21 @@ const Weathercard = (props) => {
         }
         return separateWord.join(' ');
     }
+
     let { description, child } = props.data
     let { children } = child[8]
     let currentWeather = normalizeWeatherCode(children[0].children[0].value)
     let currentWeatherIcon = currentWeather.url
     let currentWeatherName = currentWeather.name
-
-
+    let {children:temp_child} = child[7]
+    let weatherTemp = temp_child[0].children[0].value;
 
     return (<div className="card mx-0  "><span className="icon"><img alt="" className="img-fluid"
         src={currentWeatherIcon} /></span>
         <div className="title">
             <p>{capitalizeEachWord(description)}</p>
         </div>
-        <div className="temp">+20<sup>&deg;</sup></div>
+        <div className="temp">{weatherTemp}<sup>&deg;</sup>C</div>
         <div className="row">
             <div className="col-4">
                 <div className="header">General</div>

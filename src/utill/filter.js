@@ -183,46 +183,54 @@ const places = [
 const normalizeWeatherCode = (param) => {
     let result = null;
     console.log(param)
-    if (param >= 1 && param <= 4 || param >= 101 && param <= 104) {
+    if ((param >= 1 && param <= 4) || (param >= 101 && param <= 104)) {
         result = {
             url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/sun-behind-cloud_26c5.png",
             name: "Berawan"
         };
+        // eslint-disable-next-line
     } else if (param == 0 || param == 100) {
         result = {
             url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/sun_2600-fe0f.png",
             name: "Cerah"
         };
+        // eslint-disable-next-line
     } else if (param == 5) {
         result = {
             url: "https://www.flaticon.com/premium-icon/icons/svg/686/686764.svg",
             name: "Udara Kabur"
         };
+        // eslint-disable-next-line
     } else if (param === 10) {
         result = {
             url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/dashing-away_1f4a8.png",
             name: "Asap"
         }
+        // eslint-disable-next-line
     } else if (param == 60) {
         result = {
             url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/cloud-with-rain_1f327-fe0f.png",
             name: "Hujan Ringan"
         }
+        // eslint-disable-next-line
     } else if (param == 61) {
         result = {
             url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/cloud-with-rain_1f327-fe0f.png",
             name: "Hujan Sedang"
         }
+        // eslint-disable-next-line
     } else if (param == 63) {
         result = {
             url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/cloud-with-rain_1f327-fe0f.png",
             name: "Hujan Lebat"
         }
+        // eslint-disable-next-line
     } else if (param == 80) {
         result = {
             url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/cloud-with-rain_1f327-fe0f.png",
             name: "Hujan Lokal"
         }
+        // eslint-disable-next-line
     } else if (param == 95 || param == 97) {
         result = {
             url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/cloud-with-lightning-and-rain_26c8-fe0f.png",
