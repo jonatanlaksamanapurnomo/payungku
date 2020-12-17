@@ -75,7 +75,8 @@ const Home = () => {
                 </div>
                 <div className="row  w-100">
                     {data.map(item => {
-                        if (item.domain !== "pelabuhan") {
+                        console.log(item)
+                        if (item.domain !== "pelabuhan" && item.domain !== "wisata lokasi") {
                             return (<div key={data.indexOf(item)} className="col-md-4">
                                 <Weathercard data={item} />
                             </div>)
