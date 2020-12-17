@@ -4,6 +4,7 @@ import {buildFilter, filterData} from "../utill/filter";
 import {Button, Form, FormGroup, Input } from "reactstrap"
 import {places} from "../utill/filter";
 import { Typeahead } from 'react-bootstrap-typeahead';
+import Weathercard from "../component/weathercard";
 
 const Home = () => {
     const [data, setData] = useState([]);
@@ -11,6 +12,7 @@ const Home = () => {
 
     const fetchData = useCallback((place = "Indonesia") =>{
         getDataByPlace(place).then(res => {
+            console.log(res)
             setData(res)
         })
     },[])
@@ -62,7 +64,7 @@ const Home = () => {
                     </Form>
                 </div>
                 <div className="col-12">
-                    {JSON.stringify(data , null , 2)}
+                    <Weathercard/>
                 </div>
             </div>
 

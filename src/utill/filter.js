@@ -103,6 +103,10 @@ const places = [
         url:"DigitalForecast-KalimantanTimur.xml"
     },
     {
+        place:"Kalimantan Utara",
+        url:"DigitalForecast-KalimantanUtara.xml"
+    },
+    {
         place:"Kepulauan Riau",
         url:"DigitalForecast-KepulauanRiau.xml"
     },
