@@ -1,8 +1,10 @@
-import React from 'react';
+import React,{useState} from 'react';
+import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import "./weather.css";
 import { normalizeWeatherCode } from "../utill/filter";
 
 const Weathercard = (props) => {
+    const [open, setOpen] = useState(false);
     const capitalizeEachWord = (words) => {
         let separateWord = words.toLowerCase().split(' ');
         for (let i = 0; i < separateWord.length; i++) {
@@ -60,6 +62,30 @@ const Weathercard = (props) => {
                 <div className="value">No</div>
             </div>
         </div>
+        <hr></hr>
+        <div className="row mt-1" onClick={() => setOpen(!open)}
+        aria-controls="example-collapse-text"
+        aria-expanded={open}>
+            <div className="col-3">
+                12
+            </div>
+            <div className="col-3">
+                12
+            </div>
+            <div className="col-3">
+                12
+            </div>
+            <div className="col-3">
+                12
+            </div>
+        </div>
+        <Collapse in={open}>
+            <div id="example-collapse-text">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+            terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
+            labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+        </Collapse>
     </div>);
 
 };
