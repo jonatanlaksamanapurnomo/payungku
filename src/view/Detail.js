@@ -4,9 +4,10 @@ import Maps from "./Maps";
 const Detail = (props) => {
     return (
         <div>
+
             <Maps center={{
-                lat: -8.643480,
-                lng: 115.22460
+                lat: parseFloat(props.location.state.lat),
+                lng: parseFloat(props.location.state.long)
             }}/>
         </div>
     );

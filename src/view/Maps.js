@@ -15,6 +15,11 @@ function Maps(props) {
 
     const [map, setMap] = React.useState(null)
 
+    const center = {
+        lat: -3.5,
+        lng: -38.523
+    };
+
     const onLoad = React.useCallback(function callback(map) {
         const bounds = new window.google.maps.LatLngBounds();
         map.fitBounds(bounds);
@@ -22,16 +27,17 @@ function Maps(props) {
     }, [])
 
     const onUnmount = React.useCallback(function callback(map) {
+
         setMap(null)
     }, [])
 
     return isLoaded ? (
         <GoogleMap
             mapContainerStyle={containerStyle}
-            center={props.center}
             zoom={10}
             onLoad={onLoad}
             onUnmount={onUnmount}
+            center={center}
         >
             { /* Child components, such as markers, info windows, etc. */}
             <></>
@@ -39,4 +45,4 @@ function Maps(props) {
     ) : <></>
 }
 
-export default React.memo(Maps)
+export default Maps
