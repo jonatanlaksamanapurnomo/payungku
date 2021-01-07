@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-google-maps/api": "^2.1.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -15,6 +16,7 @@
     "react-scripts": "4.0.1",
     "react-xml-parser": "^1.1.8",
     "reactstrap": "^8.7.1",
+    "recompose": "^0.30.0",
     "web-vitals": "^0.2.4",
     "xml2json": "^0.12.0"
   },

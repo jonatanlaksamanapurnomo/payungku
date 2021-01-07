@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Collapse} from 'reactstrap';
 import "./weather.css";
 import {normalizeWeatherCode} from "../utill/filter";
+import {Link} from "react-router-dom";
 
 const Weathercard = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,7 @@ const Weathercard = (props) => {
         return separateWord.join(' ');
     }
 
-    let {description, child} = props.data
+    let {description, child, lat, long} = props.data
     let weatherList = null;
     let temperatureList = null;
     child.forEach(element => {
@@ -83,6 +84,11 @@ const Weathercard = (props) => {
                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
                     terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
                     labore wes anderson cred nesciunt sapiente ea proident.
+
+                    <Link to={{
+                        pathname: `/detail/${capitalizeEachWord(description)}`,
+                        state: {lat: lat, long: long},
+                    }}> See Detail </Link>
                 </div>
             </Collapse>
         </div>);
