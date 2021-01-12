@@ -47,30 +47,41 @@ const Home = () => {
     }
 
     return (
-        <div className="container">
-            <div className="row  d-flex justify-content-center">
+        <div className="container py-3">
+            <div className="pb-3 pt-2">
+                <h5>Payungku.</h5>
+            </div>
+            <div className="row d-flex justify-content-center">
                 <div className="col-12">
                     <Form>
-                        <FormGroup className="mb-3">
-                            <Typeahead
-                                id="basic-typeahead-single"
-                                labelKey="place"
-                                options={data.map(item => item.description)}
-                                onChange={handleInput}
-                                placeholder="Pilih Tempat..."
-                            />
-                        </FormGroup>
-                        <FormGroup>
-                            <Input defaultValue={"Indonesia"} onChange={onChangePlace} type="select" name="select"
-                                id="exampleSelect">
-                                {places.map(item => (
-                                    <option key={places.indexOf(item)}>{item.place}</option>
-                                ))}
-                            </Input>
-                        </FormGroup>
-                        <FormGroup className="d-flex justify-content-center">
-                            <Button onClick={handleOnClick} color="primary">Search</Button>
-                        </FormGroup>
+                    <div className="w-75 row d-flex justify-content-between" style={{margin: "0 auto"}}>
+                        <div className="col-5">
+                            <FormGroup>
+                                <Input defaultValue={"Indonesia"} onChange={onChangePlace} type="select" name="select"
+                                    id="exampleSelect">
+                                    {places.map(item => (
+                                        <option key={places.indexOf(item)}>{item.place}</option>
+                                    ))}
+                                </Input>
+                            </FormGroup>
+                        </div>
+                        <div className="col-5">
+                            <FormGroup className="mb-3">
+                                <Typeahead
+                                    id="basic-typeahead-single"
+                                    labelKey="place"
+                                    options={data.map(item => item.description)}
+                                    onChange={handleInput}
+                                    placeholder="Pilih Tempat..."
+                                />
+                            </FormGroup>
+                        </div>
+                        <div className="col-2 px-0">
+                            <FormGroup className="d-flex justify-content-center">
+                                <Button onClick={handleOnClick} color="primary" className="w-75 rounded">Search</Button>
+                            </FormGroup>
+                        </div>
+                    </div>
                     </Form>
                 </div>
                 <div className="row  w-100">
