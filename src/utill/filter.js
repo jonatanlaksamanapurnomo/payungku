@@ -37,6 +37,20 @@ const filterData = (data, query) => {
     return filteredData;
 };
 
+const getMostHeatCity = (data) => {
+    // ToDo
+    let sortedArray = data.sort((a, b) => {
+        return b.curTemp - a.curTemp
+    })
+    return sortedArray
+}
+const getMostWindSpeedCity = (data) => {
+    let sortedArray = data.sort((a, b) => {
+        return b.curWindSpeed - a.curWindSpeed
+    })
+    return sortedArray
+}
+
 const places = [
     {
         place: "Aceh",
@@ -181,7 +195,7 @@ const places = [
 ];
 
 const normalizeWeatherCode = (param) => {
-    let result = {url:"404 Not Found",name:"buchad"};
+    let result = {url: "404 Not Found", name: "buchad"};
     if ((param >= 1 && param <= 4) || (param >= 101 && param <= 104)) {
         result = {
             url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/sun-behind-cloud_26c5.png",
@@ -236,15 +250,15 @@ const normalizeWeatherCode = (param) => {
             name: "Hujan Petir"
         }
         // eslint-disable-next-line
-    } else if (param == 45){
+    } else if (param == 45) {
         result = {
             url: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/whatsapp/273/fog_1f32b-fe0f.png",
             name: "Kabut"
         }
         // eslint-disable-next-line
     }
-    
+
     return result
 }
 
-export { buildFilter, filterData, places, normalizeWeatherCode }
+export {buildFilter, filterData, places, normalizeWeatherCode, getMostHeatCity, getMostWindSpeedCity}
