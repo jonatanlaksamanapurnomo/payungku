@@ -41,6 +41,8 @@ const fieldNameMapper = (value, index) => {
             }
         windDirs.push(obj)
     }
+    let maxTemps = parseInt(value.getElementsByTagName("parameter")[2].getElementsByTagName("value")[0].childNodes[0].nodeValue);
+    let minTemps = parseInt(value.getElementsByTagName("parameter")[4].getElementsByTagName("value")[0].childNodes[0].nodeValue);
 
     return (
         {
@@ -56,8 +58,9 @@ const fieldNameMapper = (value, index) => {
             windDirs,
             curWeather,
             weathers,
-            index
-
+            index,
+            maxTemps,
+            minTemps
         }
     )
 };
