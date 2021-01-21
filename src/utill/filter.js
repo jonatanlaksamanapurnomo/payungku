@@ -38,6 +38,15 @@ const filterData = (data, query) => {
 };
 
 const getMostHeatCity = (data) => {
+    data = data.filter(item => item.domain != "error");
+    // data = data.forEach(item => {
+    //     if(item.domain == "error"){
+    //         let index = data.indexOf(item)
+    //         data.splice(index,1)
+    //     }else{
+    //         data.push(item)
+    //     }
+    // });
     let nama;
     let temp = data[0].curTemp;
     let domain;
@@ -57,8 +66,15 @@ const getMostHeatCity = (data) => {
 }
 
 const getMostWindSpeedCity = (data) => {
-    console.log(data)
-    // ToDo
+    data = data.filter(item => item.domain != "error");
+    // data = data.forEach(item => {
+    //     if(item.domain === "error"){
+    //         let index = data.indexOf(item)
+    //         data.splice(index,1)
+    //     }else{
+    //         data.push(item)
+    //     }
+    // });
     let nama;
     let speed =  data[0].curWindSpeed;
     let domain;

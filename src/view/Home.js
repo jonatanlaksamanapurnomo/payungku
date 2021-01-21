@@ -1,11 +1,11 @@
-import React, {useState, useEffect, useCallback} from 'react';
-import {buildFilter, filterData} from "../utill/filter";
-import {Button, Form, FormGroup, Input} from "reactstrap"
-import {places} from "../utill/filter";
-import {Typeahead} from 'react-bootstrap-typeahead';
+import React, { useState, useEffect, useCallback } from 'react';
+import { buildFilter, filterData } from "../utill/filter";
+import { Button, Form, FormGroup, Input } from "reactstrap"
+import { places } from "../utill/filter";
+import { Typeahead } from 'react-bootstrap-typeahead';
 import Weathercard from "../component/weathercard";
-import {getDataByPlaceXML} from "../api/Api";
-import {getMostHeatCity, getMostWindSpeedCity} from "../utill/filter";
+import { getDataByPlaceXML } from "../api/Api";
+import { getMostHeatCity, getMostWindSpeedCity } from "../utill/filter";
 
 
 const Home = () => {
@@ -49,7 +49,7 @@ const Home = () => {
 
     }
 
-    if(sortedByHeat==null || sortedByWindSpeed==null){
+    if (sortedByHeat == null || sortedByWindSpeed == null) {
         return <p>Loading..</p>
     }
     return (
@@ -59,31 +59,31 @@ const Home = () => {
             </div>
             <div className="row d-flex justify-content-center">
                 <div className="col-12">
-                <div className="row my-4">
-                    <div className="col-5 rounded border p-3 mx-3 text-white" style={{backgroundColor:"rgb(247 170 71)"}}>
-                        <small>Kota Terpanas</small>
-                        <h2 className="mb-0"><b>{sortedByHeat.description}</b></h2>
-                        <p className="mb-0"><b>{sortedByHeat.domain}</b></p>
-                        <div><b>{sortedByHeat.maxTemps}° C</b></div>
+                    <div className="row my-4">
+                        <div className="col-5 rounded border p-3 mx-3 text-white" style={{ backgroundColor: "rgb(247 170 71)" }}>
+                            <small>Kota Terpanas</small>
+                            <h2 className="mb-0"><b>{sortedByHeat.description}</b></h2>
+                            <p className="mb-0"><b>{sortedByHeat.domain}</b></p>
+                            <div><b>{sortedByHeat.maxTemps}° C</b></div>
+                        </div>
+                        <div className="col-5 rounded border p-3 mx-3 text-white" style={{ backgroundColor: "rgb(68 156 173 / 80%)" }}>
+                            <small>Kota paling Berangin</small>
+                            <h2 className="mb-0"><b>{sortedByWindSpeed.description}</b></h2>
+                            <p className="mb-0"><b>{sortedByWindSpeed.domain}</b></p>
+                            <div><b>{sortedByWindSpeed.curWindSpeed} km/h</b></div>
+                        </div>
                     </div>
-                    <div className="col-5 rounded border p-3 mx-3 text-white" style={{backgroundColor:"rgb(68 156 173 / 80%)"}}>
-                        <small>Kota paling Berangin</small>
-                        <h2 className="mb-0"><b>{sortedByWindSpeed.description}</b></h2>
-                        <p className="mb-0"><b>{sortedByWindSpeed.domain}</b></p>
-                        <div><b>{sortedByWindSpeed.curWindSpeed} km/h</b></div>
-                    </div>
-                </div>
                     {/* <p>Kota terpanas</p>
                     {JSON.stringify(sortedByHeat[0])}
                     <p className="mt-5">Kota paling berangin</p>
                     {JSON.stringify(sortedByWindSpeed[0])} */}
                     <Form>
-                        <div className="w-75 row d-flex justify-content-between" style={{margin: "0 auto"}}>
+                        <div className="w-75 row d-flex justify-content-between" style={{ margin: "0 auto" }}>
                             <div className="col-5">
                                 <FormGroup>
                                     <Input defaultValue={"Indonesia"} onChange={onChangePlace} type="select"
-                                           name="select"
-                                           id="exampleSelect">
+                                        name="select"
+                                        id="exampleSelect">
                                         {places.map(item => (
                                             <option key={places.indexOf(item)}>{item.place}</option>
                                         ))}
@@ -104,7 +104,7 @@ const Home = () => {
                             <div className="col-2 px-0">
                                 <FormGroup className="d-flex justify-content-center">
                                     <Button onClick={handleOnClick} color="primary"
-                                            className="w-75 rounded">Search</Button>
+                                        className="w-75 rounded">Search</Button>
                                 </FormGroup>
                             </div>
                         </div>
@@ -112,12 +112,12 @@ const Home = () => {
                 </div>
                 <div className="row  w-100 bg-red">
                     {data.map(item => {
-                            if(item.description!="error"){
+                        if (item.description != "error") {
                             return (<div key={data.indexOf(item)} className="col-md-4">
-                                <Weathercard data={item}/>
+                                <Weathercard data={item} />
                             </div>)
-                            }  
                         }
+                    }
                     )}
 
                 </div>
