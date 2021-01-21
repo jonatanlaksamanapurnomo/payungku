@@ -39,17 +39,43 @@ const filterData = (data, query) => {
 
 const getMostHeatCity = (data) => {
     // ToDo
-    let sortedArray = data.sort((a, b) => {
-        return b.curTemp - a.curTemp
-    })
-    return sortedArray;
+    let nama;
+    let temp = data[0];
+    let domain;
+    data.forEach(item => {
+        if(item.curTemp > temp.curTemp){
+            temp = item.curTemp
+            nama = item.description
+            domain = item.domain
+        }
+    });
+
+    return {
+        maxTemps : temp,
+        description : nama,
+        domain : domain
+    };
 }
 
 const getMostWindSpeedCity = (data) => {
-    let sortedArray = data.sort((a, b) => {
-        return b.curWindSpeed - a.curWindSpeed
-    })
-    return sortedArray
+    console.log(data)
+    // ToDo
+    let nama;
+    let speed =  data[0].curWindSpeed;
+    let domain;
+    data.forEach(item => {
+        if(parseInt(item.curWindSpeed) > parseInt(speed)){
+            speed = item.curWindSpeed
+            nama = item.description
+            domain = item.domain
+        }
+    });
+
+    return {
+        curWindSpeed : speed,
+        description : nama,
+        domain : domain
+    };
 }
 
 const places = [

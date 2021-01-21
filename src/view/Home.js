@@ -49,10 +49,9 @@ const Home = () => {
 
     }
 
-    if(sortedByHeat[0]==null || sortedByWindSpeed[0]==null){
+    if(sortedByHeat==null || sortedByWindSpeed==null){
         return <p>Loading..</p>
     }
-
     return (
         <div className="container py-3">
             <div className="pb-3 pt-2">
@@ -60,20 +59,20 @@ const Home = () => {
             </div>
             <div className="row d-flex justify-content-center">
                 <div className="col-12">
-                {/* <div className="row my-4">
+                <div className="row my-4">
                     <div className="col-5 rounded border p-3 mx-3 text-white" style={{backgroundColor:"rgb(247 170 71)"}}>
                         <small>Kota Terpanas</small>
-                        <h2 className="mb-0"><b>{sortedByHeat[0].description}</b></h2>
-                        <p className="mb-0"><b>{sortedByHeat[0].domain}</b></p>
-                        <div><b>{sortedByHeat[0].maxTemps}° C</b></div>
+                        <h2 className="mb-0"><b>{sortedByHeat.description}</b></h2>
+                        <p className="mb-0"><b>{sortedByHeat.domain}</b></p>
+                        <div><b>{sortedByHeat.maxTemps}° C</b></div>
                     </div>
                     <div className="col-5 rounded border p-3 mx-3 text-white" style={{backgroundColor:"rgb(68 156 173 / 80%)"}}>
                         <small>Kota paling Berangin</small>
-                        <h2 className="mb-0"><b>{sortedByWindSpeed[0].description}</b></h2>
-                        <p className="mb-0"><b>{sortedByWindSpeed[0].domain}</b></p>
-                        <div><b>{sortedByWindSpeed[0].curWindSpeed} km/h</b></div>
+                        <h2 className="mb-0"><b>{sortedByWindSpeed.description}</b></h2>
+                        <p className="mb-0"><b>{sortedByWindSpeed.domain}</b></p>
+                        <div><b>{sortedByWindSpeed.curWindSpeed} km/h</b></div>
                     </div>
-                </div> */}
+                </div>
                     {/* <p>Kota terpanas</p>
                     {JSON.stringify(sortedByHeat[0])}
                     <p className="mt-5">Kota paling berangin</p>
@@ -113,10 +112,11 @@ const Home = () => {
                 </div>
                 <div className="row  w-100 bg-red">
                     {data.map(item => {
-
+                            if(item.description!="error"){
                             return (<div key={data.indexOf(item)} className="col-md-4">
                                 <Weathercard data={item}/>
                             </div>)
+                            }  
                         }
                     )}
 

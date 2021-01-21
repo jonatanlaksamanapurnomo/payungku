@@ -47,7 +47,7 @@ const Weathercard = (props) => {
         console.log("Data tidak valid")
         return null;
     }
-
+    
     return (
 
         <div onClick={toggle} className="card mx-0  "><span className="icon"><img alt="" className="img-fluid"
