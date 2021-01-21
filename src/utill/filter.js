@@ -42,8 +42,9 @@ const getMostHeatCity = (data) => {
     let sortedArray = data.sort((a, b) => {
         return b.curTemp - a.curTemp
     })
-    return sortedArray
+    return sortedArray;
 }
+
 const getMostWindSpeedCity = (data) => {
     let sortedArray = data.sort((a, b) => {
         return b.curWindSpeed - a.curWindSpeed

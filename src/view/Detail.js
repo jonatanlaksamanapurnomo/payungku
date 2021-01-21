@@ -35,7 +35,6 @@ const Detail = (props) => {
                     display: false
                 },
                 ticks: {
-                    display: false,
                     min: 10,
                 }
             }]
@@ -58,8 +57,8 @@ const Detail = (props) => {
                 <h3 className="py-1 text-center my-3">{data.description}, {data.domain}</h3>
                 <div className="container p-2">
                     <div class="row ml-0 justify-content-center">
-                        <div className="col-3">
-                            <div className="d-flex align-items-center">
+                        <div className="col-3 px-0">
+                            <div className="d-flex align-items-center justify-content-center">
                                 <div className="mx-1">
                                     <img height="36px" width="36px" src={process.env.PUBLIC_URL + '/humidity.png'}/>
                                 </div>
@@ -83,8 +82,8 @@ const Detail = (props) => {
                                 </div>
                             </div>
                         </div> */}
-                        <div className="col-3">
-                            <div className="d-flex align-items-center">
+                        <div className="col-3 px-0">
+                            <div className="d-flex align-items-center justify-content-center">
                                 <div className="mx-1">
                                     <img height="36px" width="36px" src={process.env.PUBLIC_URL + '/thermometer.png'}/>
                                 </div>
@@ -94,8 +93,8 @@ const Detail = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-3">
-                            <div className="d-flex align-items-center">
+                        <div className="col-3 px-0">
+                            <div className="d-flex align-items-center justify-content-center">
                                 <div className="mx-1">
                                     <img height="36px" width="36px" src={process.env.PUBLIC_URL + '/thermometer.png'}/>
                                 </div>
