@@ -38,12 +38,11 @@ const filterData = (data, query) => {
 };
 
 const getMostHeatCity = (data) => {
-    // ToDo
     let nama;
-    let temp = data[0];
+    let temp = data[0].curTemp;
     let domain;
     data.forEach(item => {
-        if(item.curTemp > temp.curTemp){
+        if(item.curTemp >= temp){
             temp = item.curTemp
             nama = item.description
             domain = item.domain
@@ -64,7 +63,7 @@ const getMostWindSpeedCity = (data) => {
     let speed =  data[0].curWindSpeed;
     let domain;
     data.forEach(item => {
-        if(parseInt(item.curWindSpeed) > parseInt(speed)){
+        if(parseInt(item.curWindSpeed) >= parseInt(speed)){
             speed = item.curWindSpeed
             nama = item.description
             domain = item.domain
