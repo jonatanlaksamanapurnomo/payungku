@@ -1,21 +1,3 @@
-// let filter = {
-//     city: [
-//
-//     ],
-//     state: [
-//         'OR',
-//         'CA',
-//     ],
-//     type: [
-//         'House',
-//     ],
-//     petsAllowed: [
-//         true,
-//     ],
-//     saleType: [
-//         'For Sale',
-//     ],
-// };
 const buildFilter = (filter) => {
     let query = {};
     for (let keys in filter) {
@@ -39,14 +21,6 @@ const filterData = (data, query) => {
 
 const getMostHeatCity = (data) => {
     data = data.filter(item => item.domain != "error");
-    // data = data.forEach(item => {
-    //     if(item.domain == "error"){
-    //         let index = data.indexOf(item)
-    //         data.splice(index,1)
-    //     }else{
-    //         data.push(item)
-    //     }
-    // });
     let nama;
     let temp = data[0].curTemp;
     let domain;
@@ -67,14 +41,6 @@ const getMostHeatCity = (data) => {
 
 const getMostWindSpeedCity = (data) => {
     data = data.filter(item => item.domain != "error");
-    // data = data.forEach(item => {
-    //     if(item.domain === "error"){
-    //         let index = data.indexOf(item)
-    //         data.splice(index,1)
-    //     }else{
-    //         data.push(item)
-    //     }
-    // });
     let nama;
     let speed =  data[0].curWindSpeed;
     let domain;

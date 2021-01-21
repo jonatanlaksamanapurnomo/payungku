@@ -105,19 +105,23 @@ const getDataByPlaceXML = (keyword) => {
         // bahasa indonesia mulai dari 1 , english dari 0
         let result = [];
         let area = xmlDom.getElementsByTagName("area")
-        let date = {
-            hour: xmlDom.getElementsByTagName("issue")[0].getElementsByTagName("hour")[0].childNodes[0].nodeValue,
-            minute: xmlDom.getElementsByTagName("issue")[0].getElementsByTagName("minute")[0].childNodes[0].nodeValue
-        }
+        // let date = {
+        //     hour: xmlDom.getElementsByTagName("issue")[0].getElementsByTagName("hour")[0].childNodes[0].nodeValue,
+        //     minute: xmlDom.getElementsByTagName("issue")[0].getElementsByTagName("minute")[0].childNodes[0].nodeValue
+        // }
         let today = new Date();
-        let jam = [0, 6, 12, 18, 24]
+        let jam = [0, 6, 12, 18, 24, 30, 36, 42, 48 ,54 ,60 , 66]
+        console.log(today.getHours())
         jam = jam.map(item => {
-            return Math.abs((today.getHours() - date.hour) - item)
+            return Math.abs((today.getHours() - 12) - item)
         })
-        let idx = jam.indexOf(Math.min.apply(Math, jam))
+        let idx = jam.indexOf(Math.min.apply(Math, jam)) +1
+        
+        console.log(idx)
         for (let item of area) {
             result.push(fieldNameMapper(item, idx))
         }
+        console.log(result)
         return result;
 
     })
